@@ -1,0 +1,94 @@
+{
+    "author": "pebble@schlotzz.com",
+    "dependencies": {
+        "pebble-clay": "^1.0.4"
+    },
+    "keywords": [],
+    "name": "octowatch2",
+    "pebble": {
+        "capabilities": [
+            "configurable"
+        ],
+        "displayName": "OctoWatch2",
+        "enableMultiJS": true,
+        "messageKeys": [
+            "ready",
+            "filename",
+            "remaining_time",
+            "state",
+            "progress",
+            "temp0",
+            "temp1",
+            "tempbed"
+        ],
+        "projectType": "native",
+        "resources": {
+            "media": [
+                {
+                    "file": "images/icon_connect.png",
+                    "name": "CONNECT_ICON",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/icon_cancel.png",
+                    "name": "CANCEL_ICON",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/icon_nozzle.png",
+                    "name": "NOZZLE_ICON",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/icon_bed.png",
+                    "name": "BED_ICON",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/icon_play.png",
+                    "name": "PLAY_ICON",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/icon_pause.png",
+                    "name": "PAUSE_ICON",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/icon_menu.png",
+                    "menuIcon": true,
+                    "name": "MENU_ICON",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/icon_ellipsis.png",
+                    "name": "ELLIPSIS_ICON",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/icon_dismiss.png",
+                    "name": "DISMISS_ICON",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                }
+            ]
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "basalt"
+        ],
+        "uuid": "605e1126-d933-433e-8334-e519995a1ac0",
+        "watchapp": {
+            "watchface": false
+        }
+    },
+    "version": "2.0.0"
+}
