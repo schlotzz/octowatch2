@@ -13,6 +13,7 @@ Octowatch2 is heavily inspired by [Octowatch](https://github.com/jjg/octowatch),
 * uses AppGlance to display current state in menu
 * uses the [Pebble Clay](https://github.com/pebble/clay) config framework
 * shows progress bar in main view
+* uses confirmation dialog for aborting printjobs
 * split C/JS source into several files for better maintainability
 
 
