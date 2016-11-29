@@ -6,6 +6,7 @@
 
 #include <pebble.h>
 #include "window_main.h"
+#include "window_confirm.h"
 #include "printer.h"
 #include "messaging.h"
 #include "progress_layer.h"
@@ -38,6 +39,12 @@ static BitmapLayer *s_bitmaplayer_nozzle;
 static BitmapLayer *s_bitmaplayer_bed;
 
 
+// user canceled printjob
+static void window_main_cancel_printjob(void) {
+  messaging_outbox_send("cancel");
+}
+
+
 // handle click on up button
 static void window_main_actionbar_up(ClickRecognizerRef recognizer, void *context) {
   messaging_outbox_send("pause");
@@ -52,7 +59,8 @@ static void window_main_actionbar_select(ClickRecognizerRef recognizer, void *co
 
 // handle click on down button
 static void window_main_actionbar_down(ClickRecognizerRef recognizer, void *context) {
-  messaging_outbox_send("cancel");
+  //messaging_outbox_send("cancel");
+  window_confirm_init_custom("Abort printjob?", PBL_IF_COLOR_ELSE(GColorRed, GColorWhite), window_main_cancel_printjob);
 }
 
 
@@ -231,6 +239,9 @@ static void window_main_unload_handler(Window *window) {
   
   // destroy background layer
   layer_destroy(s_bg_layer);
+  
+  // destroy window
+  window_destroy(s_window_main);
 }
 
 
@@ -308,5 +319,5 @@ void window_main_init(void) {
 
 // destroy window
 void window_main_destroy(void) {
-  window_destroy(s_window_main);
+  window_stack_pop(true);
 }

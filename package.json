@@ -25,6 +25,24 @@
         "resources": {
             "media": [
                 {
+                    "file": "data/pdc_question.pdc",
+                    "name": "QUESTION_PDC",
+                    "targetPlatforms": null,
+                    "type": "raw"
+                },
+                {
+                    "file": "images/icon_cross.png",
+                    "name": "CROSS_ICON",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/icon_tick.png",
+                    "name": "TICK_ICON",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
                     "file": "images/icon_play.png",
                     "name": "PLAY_ICON",
                     "targetPlatforms": null,
@@ -52,12 +70,6 @@
                 {
                     "file": "images/icon_ellipsis.png",
                     "name": "ELLIPSIS_ICON",
-                    "targetPlatforms": null,
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/icon_dismiss.png",
-                    "name": "DISMISS_ICON",
                     "targetPlatforms": null,
                     "type": "bitmap"
                 },
@@ -92,5 +104,5 @@
             "watchface": false
         }
     },
-    "version": "1.0.0"
+    "version": "1.1.0"
 }
