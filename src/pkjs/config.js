@@ -75,6 +75,29 @@ module.exports = [
     ]
   },
   {
+    "type": "section",
+    "items": [
+      {
+        "type": "heading",
+        "defaultValue": "Preheat Settings"
+      },
+      {
+        "type": "input",
+        "messageKey": "nozzle",
+        "label": "Nozzle",
+        "defaultValue": localStorage.getItem('octoprintnozzle') || 185,
+        "description": "Set the temperature for preheating your nozzle."
+      },
+      {
+        "type": "input",
+        "messageKey": "bed",
+        "label": "Heatbed",
+        "defaultValue": localStorage.getItem('octoprintbed') || 65,
+        "description": "Set the temperature for preheating your heated bed."
+      }
+    ]
+  },
+  {
     "type": "submit",
     "defaultValue": "Save Settings"
   }

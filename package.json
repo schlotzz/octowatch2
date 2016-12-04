@@ -25,6 +25,12 @@
         "resources": {
             "media": [
                 {
+                    "file": "images/icon_refresh.png",
+                    "name": "REFRESH_ICON",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
                     "file": "data/pdc_question.pdc",
                     "name": "QUESTION_PDC",
                     "targetPlatforms": null,
@@ -76,12 +82,6 @@
                 {
                     "file": "images/icon_connect.png",
                     "name": "CONNECT_ICON",
-                    "targetPlatforms": null,
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/icon_cancel.png",
-                    "name": "CANCEL_ICON",
                     "targetPlatforms": null,
                     "type": "bitmap"
                 },

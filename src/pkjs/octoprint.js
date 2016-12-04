@@ -3,7 +3,8 @@ var Octoprint = {
   path: {
     job: '/api/job',
     printer: '/api/printer',
-    connection: '/api/connection'
+    connection: '/api/connection',
+    command: '/api/printer/command'
   },
 
   
@@ -127,6 +128,24 @@ var Octoprint = {
       // ajax call failed
       function(data) {
         console.log('connectPrinter: call failed ' + data);
+      }
+    );
+  },
+  
+  
+  // send gcode command
+  sendCommand: function(gcode) {
+    Ajax.send(
+      'POST',
+      Octoprint.path.command,
+      {command: gcode},
+      // got response
+      function(data) {
+        console.log('sendCommand: received data');
+      },
+      // ajax call failed
+      function(data) {
+        console.log('sendCommand: call failed ' + data);
       }
     );
   }

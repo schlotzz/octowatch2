@@ -30,7 +30,21 @@ var Octowatch = {
       // cancel print job
       case 'cancel':
         Octoprint.cancelJob();
-        break;    
+        break;
+        
+      // preheat nozzle and bed
+      case 'preheat':
+        Octoprint.sendCommand("M117 Preheating..."); // display message
+        Octoprint.sendCommand("M104 S" + localStorage.getItem('octoprintnozzle')); // set nozzle temp
+        Octoprint.sendCommand("M140 S" + localStorage.getItem('octoprintbed')); // set bed temp
+        break;
+      
+      // send gcode command(s)
+      case 'gcode':
+        var commands = data[1].split("\n");
+        for (var i in commands)
+          Octoprint.sendCommand(commands[i]);
+        break;
     }
   },
   

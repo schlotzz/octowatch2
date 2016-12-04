@@ -1,20 +1,17 @@
 var Ajax = {
-  
-  usessl: localStorage.getItem('octoprintusessl') > 0,
-  host: localStorage.getItem('octoprinthost'),
-  port: localStorage.getItem('octoprintport'),
-  apikey: localStorage.getItem('octoprintapikey'),
-  usebasicauth: localStorage.getItem('octoprintusebasicauth'),
-  auth: {
-    user: localStorage.getItem('octoprintuser'),
-    password: localStorage.getItem('octoprintpassword')
-  },
-  
-  
+
   // send ajax call
   send: function(method, path, params, onSuccess, onError) {
 
-    var url = 'http' + (Ajax.usessl ? 's' : '') + '://' + Ajax.host + ':' + Ajax.port + path;
+    var usessl = localStorage.getItem('octoprintusessl') > 0,
+        host = localStorage.getItem('octoprinthost'),
+        port = localStorage.getItem('octoprintport'),
+        apikey = localStorage.getItem('octoprintapikey'),
+        usebasicauth = localStorage.getItem('octoprintusebasicauth'),
+        user = localStorage.getItem('octoprintuser'),
+        password = localStorage.getItem('octoprintpassword'),          
+        url = 'http' + (usessl ? 's' : '') + '://' + host + ':' + port + path;
+    
     console.log("calling " + url);
 
     var req = new XMLHttpRequest(),
@@ -23,7 +20,7 @@ var Ajax = {
     
     // add apikey to params, if get
     if (!isMethodPost)
-      params.apikey = Ajax.apikey;
+      params.apikey = apikey;
 
     // merge params
     for (var key in params)
@@ -34,13 +31,13 @@ var Ajax = {
     req.open(method.toUpperCase(), mergedUrl, true);
     
     // if credentials given, use http basic auth
-    if (Ajax.usebasicauth)
-      req.setRequestHeader('Authorization', 'Basic ' + Base64.encode(Ajax.auth.user + ':' + Ajax.auth.password));
+    if (usebasicauth)
+      req.setRequestHeader('Authorization', 'Basic ' + Base64.encode(user + ':' + password));
 
     // set proper header for post
     if (isMethodPost) {
       req.setRequestHeader('Content-Type', 'application/json');
-      req.setRequestHeader('X-API-KEY', Ajax.apikey);
+      req.setRequestHeader('X-API-KEY', apikey);
     }
 
     // register callback handlers

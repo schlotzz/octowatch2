@@ -6,7 +6,7 @@
 
 #include <pebble.h>
 #include "window_main.h"
-#include "window_confirm.h"
+#include "window_menu.h"
 #include "printer.h"
 #include "messaging.h"
 #include "progress_layer.h"
@@ -19,9 +19,9 @@ static ActionBarLayer *s_actionbar;
 
 static GBitmap *image_connect;
 static GBitmap *image_refresh;
+static GBitmap *image_menu;
 static GBitmap *image_pause;
 static GBitmap *image_start;
-static GBitmap *image_cancel;
 static GBitmap *image_nozzle;
 static GBitmap *image_bed;
 
@@ -39,28 +39,21 @@ static BitmapLayer *s_bitmaplayer_nozzle;
 static BitmapLayer *s_bitmaplayer_bed;
 
 
-// user canceled printjob
-static void window_main_cancel_printjob(void) {
-  messaging_outbox_send("cancel");
-}
-
-
 // handle click on up button
 static void window_main_actionbar_up(ClickRecognizerRef recognizer, void *context) {
-  messaging_outbox_send("pause");
+  messaging_outbox_send("pause", "");
 }
 
 
 // handle click on select button
 static void window_main_actionbar_select(ClickRecognizerRef recognizer, void *context) {
-  messaging_outbox_send("update");
+  window_menu_init();
 }
 
 
 // handle click on down button
 static void window_main_actionbar_down(ClickRecognizerRef recognizer, void *context) {
-  //messaging_outbox_send("cancel");
-  window_confirm_init_custom("Abort printjob?", PBL_IF_COLOR_ELSE(GColorRed, GColorWhite), window_main_cancel_printjob);
+  messaging_outbox_send("update", "");
 }
 
 
@@ -115,10 +108,10 @@ static void window_main_load_handler(Window *window) {
   
   // load images
 	image_connect = gbitmap_create_with_resource(RESOURCE_ID_CONNECT_ICON);
-  image_refresh = gbitmap_create_with_resource(RESOURCE_ID_ELLIPSIS_ICON);
+  image_refresh = gbitmap_create_with_resource(RESOURCE_ID_REFRESH_ICON);
+  image_menu = gbitmap_create_with_resource(RESOURCE_ID_ELLIPSIS_ICON);
   image_start = gbitmap_create_with_resource(RESOURCE_ID_PLAY_ICON);
   image_pause = gbitmap_create_with_resource(RESOURCE_ID_PAUSE_ICON);
-  image_cancel = gbitmap_create_with_resource(RESOURCE_ID_CANCEL_ICON);
   image_nozzle = gbitmap_create_with_resource(RESOURCE_ID_NOZZLE_ICON);
   image_bed = gbitmap_create_with_resource(RESOURCE_ID_BED_ICON);
   
@@ -127,8 +120,8 @@ static void window_main_load_handler(Window *window) {
 	action_bar_layer_add_to_window(s_actionbar, window);
 	action_bar_layer_set_click_config_provider(s_actionbar, window_main_actionbar_config);
 	action_bar_layer_set_icon(s_actionbar, BUTTON_ID_UP, image_connect);
-	action_bar_layer_set_icon(s_actionbar, BUTTON_ID_SELECT, image_refresh);
-  action_bar_layer_set_icon(s_actionbar, BUTTON_ID_DOWN, image_cancel);
+	action_bar_layer_set_icon(s_actionbar, BUTTON_ID_SELECT, image_menu);
+  action_bar_layer_set_icon(s_actionbar, BUTTON_ID_DOWN, image_refresh);
   
 	// background layer
   s_bg_layer = layer_create(GRect(2, 2, (bounds.size.w - ACTION_BAR_WIDTH - 4), bounds.size.h - 4));
@@ -217,9 +210,9 @@ static void window_main_unload_handler(Window *window) {
   // destroy images
   gbitmap_destroy(image_connect);
   gbitmap_destroy(image_refresh);
+  gbitmap_destroy(image_menu);
   gbitmap_destroy(image_pause);
   gbitmap_destroy(image_start);
-  gbitmap_destroy(image_cancel);
   gbitmap_destroy(image_nozzle);
   gbitmap_destroy(image_bed);
   
@@ -301,7 +294,7 @@ void window_main_set_state(const char *value) {
 // update data
 void window_main_timer_fired(struct tm *tick_time, TimeUnits units_changed) {
   APP_LOG(APP_LOG_LEVEL_DEBUG, "timer fired, reloading");
-  messaging_outbox_send("update");
+  messaging_outbox_send("update", "");
 }
 
 

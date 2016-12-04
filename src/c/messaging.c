@@ -87,7 +87,7 @@ static void messaging_inbox_dropped(AppMessageResult reason, void *context) {
 
 
 // send an outgoing message
-void messaging_outbox_send(const char *value) {
+void messaging_outbox_send(const char *command, const char *value) {
   DictionaryIterator *iter;
   app_message_outbox_begin(&iter);
 
@@ -97,7 +97,8 @@ void messaging_outbox_send(const char *value) {
     return;
   }
 
-  dict_write_cstring(iter, 0, value);
+  dict_write_cstring(iter, 0, command);
+  dict_write_cstring(iter, 1, value);
   dict_write_end(iter);
 
   app_message_outbox_send();
