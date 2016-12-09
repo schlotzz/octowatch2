@@ -1,7 +1,7 @@
 #Octowatch2 ![Octowatch2 logo](https://github.com/schlotzz/octowatch2/blob/master/resources/images/icon_menu.png "Octowatch2 logo")
 Use your Pebble watch to monitor and control 3D printers that use the excellent [Octoprint](http://octoprint.org/) host software.
 
-![Octowatch2 screenshot](https://github.com/schlotzz/octowatch2/blob/master/screenshots/octowatch2-main-window.png "Screenshot Octowatch2 main window") ![Octowatch2 screenshot](https://github.com/schlotzz/octowatch2/blob/master/screenshots/octowatch2-appmenu.png "Screenshot Pebble app menu")
+![Octowatch2 screenshot](https://github.com/schlotzz/octowatch2/blob/master/screenshots/basalt/octowatch2-basalt-main-window.png "Screenshot Octowatch2 main window") ![Octowatch2 screenshot](https://github.com/schlotzz/octowatch2/blob/master/screenshots/basalt/octowatch2-basalt-commands.png "Screenshot Octowatch2 commands") ![Octowatch2 screenshot](https://github.com/schlotzz/octowatch2/blob/master/screenshots/basalt/octowatch2-basalt-abort-printjob.png "Screenshot Octowatch2 abort printjob") ![Octowatch2 screenshot](https://github.com/schlotzz/octowatch2/blob/master/screenshots/basalt/octowatch2-basalt-confirmation.png "Screenshot Octowatch2 preheat bed") ![Octowatch2 screenshot](https://github.com/schlotzz/octowatch2/blob/master/screenshots/basalt/octowatch2-basalt-appmenu.png "Screenshot Pebble app menu")
 
 ##Features
 Octowatch2 is heavily inspired by [Octowatch](https://github.com/jjg/octowatch), but completely rewritten from scratch to consider current Pebble SDK4 developments.
