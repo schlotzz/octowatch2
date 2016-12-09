@@ -52,4 +52,4 @@ This software is released under CreativeCommons [CC-BY-SA 3.0](http://creativeco
 
 ##Credits & Thanks
 * Pebble for crafting such a great smartwatch / platform. Creating apps has never been so easy and straight forward with [Cloud Pebble](https://cloudpebble.net/) and your well written tutorials. *We will miss you. Still hoping fitbit will adapt your great os and release a smartwatch with it soon... ¯\_(ツ)_/¯*
-* [Jig](https://github.com/jjg) for his great idea writing the original [Octowatch](https://github.com/jjg/octowatch) pebble app for controlling your Octoprint setup.
+* [Jjg](https://github.com/jjg) for his great idea writing the original [Octowatch](https://github.com/jjg/octowatch) pebble app for controlling your Octoprint setup.
