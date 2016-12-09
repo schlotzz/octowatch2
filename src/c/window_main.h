@@ -1,11 +1,13 @@
-#pragma once
+// OctoWatch2
+// A Pebble watch app for monitoring and basic controlling of 3D printers via Octoprint
+//
+// Licence: CC BY-SA 3.0, http://creativecommons.org/licenses/by-sa/3.0/
+// Author: Dominik Scholz <pebble@schlotzz.com>, go4u.de Webdesign <info@go4u.de>
 
-//static void window_main_actionbar_up(ClickRecognizerRef, void *);
-//static void window_main_actionbar_select(ClickRecognizerRef, void *);
-//static void window_main_actionbar_down(ClickRecognizerRef, void *);
+#pragma once
+#include <pebble.h>
+
 void window_main_actionbar_config(void *);
-//static void window_main_load_handler(Window *);
-//static void window_main_unload_handler(Window *);
 void window_main_set_time_remaing_counter(const char *);
 void window_main_set_filename(const char *);
 void window_main_set_nozzle(const uint16_t, const uint16_t);

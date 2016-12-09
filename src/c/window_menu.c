@@ -7,11 +7,12 @@
 #include <pebble.h>
 #include "window_menu.h"
 #include "window_confirm.h"
+#include "window_message.h"
 #include "messaging.h"
 
 #define MENU_SECTIONS 3
 #define MENU_FIRST_ITEMS 1
-#define MENU_SECOND_ITEMS 4
+#define MENU_SECOND_ITEMS 6
 #define MENU_THIRD_ITEMS 2
 
 static Window *s_window_main;
@@ -37,36 +38,56 @@ static void window_menu_confirm_cancel_printjob(int s, void *ctx) {
 
 // preheat bed and nozzle
 static void window_menu_preheat(int s, void *ctx) {
+  window_message_init_custom("Preheat", GColorOrange);
   messaging_outbox_send("preheat", "");
+}
+
+
+// preheat bed
+static void window_menu_preheat_bed(int s, void *ctx) {
+  window_message_init_custom("Preheat Bed", GColorOrange);
+  messaging_outbox_send("preheat", "bed");
+}
+
+
+// preheat nozzle
+static void window_menu_preheat_nozzle(int s, void *ctx) {
+  window_message_init_custom("Preheat Nozzle", GColorOrange);
+  messaging_outbox_send("preheat", "nozzle");
 }
 
 
 // cooldown bed and nozzle
 static void window_menu_cooldown(int s, void *ctx) {
+  window_message_init_custom("Cooldown", GColorCyan);
   messaging_outbox_send("gcode", "M117 Cooldown...\nM140 S0\nM104 S0");
 }
 
 
 // turn fans on
 static void window_menu_fans_on(int s, void *ctx) {
+  window_message_init_custom("Fans on", GColorGreen);
   messaging_outbox_send("gcode", "M117 Fans on...\nM106 S255");
 }
 
 
 // turn fans off
 static void window_menu_fans_off(int s, void *ctx) {
+  window_message_init_custom("Fans off", GColorGreen);
   messaging_outbox_send("gcode", "M117 Fans off...\nM106 S0");
 }
 
 
 // home all axes
 static void window_menu_home_axes(int s, void *ctx) {
+  window_message_init_custom("Homing", GColorMagenta);
   messaging_outbox_send("gcode", "M117 Homing...\nG28");
 }
 
 
 // turn all motors off
 static void window_menu_motors_off(int s, void *ctx) {
+  window_message_init_custom("Motors off", GColorVividViolet);
   messaging_outbox_send("gcode", "M117 Motors off...\nM18");
 }
 
@@ -96,16 +117,26 @@ static void window_menu_load_handler(Window *window) {
     .callback = window_menu_preheat
   };
   s_menu_items_second[1] = (SimpleMenuItem) {
+    .title = "Preheat bed",
+    .subtitle = "Preheat bed only",
+    .callback = window_menu_preheat_bed
+  };
+  s_menu_items_second[2] = (SimpleMenuItem) {
+    .title = "Preheat nozzle",
+    .subtitle = "Preheat nozzle only",
+    .callback = window_menu_preheat_nozzle
+  };
+  s_menu_items_second[3] = (SimpleMenuItem) {
     .title = "Cooldown",
     .subtitle = "Cooldown nozzle and bed",
     .callback = window_menu_cooldown
   };
-  s_menu_items_second[2] = (SimpleMenuItem) {
+  s_menu_items_second[4] = (SimpleMenuItem) {
     .title = "Fans on",
     .subtitle = "Turn the fans on",
     .callback = window_menu_fans_on
   };
-  s_menu_items_second[3] = (SimpleMenuItem) {
+  s_menu_items_second[5] = (SimpleMenuItem) {
     .title = "Fans off",
     .subtitle = "Turn the fans off",
     .callback = window_menu_fans_off

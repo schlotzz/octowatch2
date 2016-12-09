@@ -1,3 +1,9 @@
+// OctoWatch2
+// A Pebble watch app for monitoring and basic controlling of 3D printers via Octoprint
+//
+// Licence: CC BY-SA 3.0, http://creativecommons.org/licenses/by-sa/3.0/
+// Author: Dominik Scholz <pebble@schlotzz.com>, go4u.de Webdesign <info@go4u.de>
+
 #include <pebble.h>
 #include "window_confirm.h"
 
@@ -37,7 +43,7 @@ static void window_main_actionbar_config(void *context) {
 }
 
 
-// render background layer
+// render icon layer
 static void window_main_draw_icon_layer(Layer *layer, GContext *context) {
   GRect bounds = layer_get_bounds(layer);
   const GEdgeInsets frame_insets = {

@@ -5,7 +5,7 @@
 // Author: Dominik Scholz <pebble@schlotzz.com>, go4u.de Webdesign <info@go4u.de>
 
 // progress_layer
-// taken from https://github.com/pebble-examples/ui-patterns/ (MIT License)
+// taken from https://github.com/pebble-examples/ui-patterns/
 //
 // Licence: The MIT License (MIT)
 // Author: C-D-Lewis

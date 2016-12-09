@@ -7,6 +7,5 @@
 #pragma once
 #include <pebble.h>
 
-void window_confirm_init(void);
-void window_confirm_init_custom(const char *, GColor, void(*)(void));
-void window_confirm_destroy(void);
+void window_message_init_custom(const char *, GColor);
+void window_message_destroy(void);

@@ -1,5 +1,5 @@
 {
-    "author": "pebble@schlotzz.com",
+    "author": "schlotzz / go4u.de Webdesign",
     "dependencies": {
         "pebble-clay": "^1.0.4"
     },
@@ -24,6 +24,12 @@
         "projectType": "native",
         "resources": {
             "media": [
+                {
+                    "file": "data/pdc_notification.pdc",
+                    "name": "NOTIFICATION_PDC",
+                    "targetPlatforms": null,
+                    "type": "raw"
+                },
                 {
                     "file": "images/icon_refresh.png",
                     "name": "REFRESH_ICON",
@@ -104,5 +110,5 @@
             "watchface": false
         }
     },
-    "version": "1.1.0"
+    "version": "1.2.0"
 }

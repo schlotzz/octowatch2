@@ -9,7 +9,6 @@
 #include "messaging.h"
 #include "app_glance.h"
 
-
 // do init
 static void init(void) {
   window_main_init();

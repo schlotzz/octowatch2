@@ -10,7 +10,6 @@
 
 #define APP_GLANCE_DEFAULT_TIMEOUT 30*60 // 30 minutes after last update
 
-
 static int s_app_glance_timeout = APP_GLANCE_SLICE_NO_EXPIRATION;
 
 

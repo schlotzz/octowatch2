@@ -1,3 +1,9 @@
+// OctoWatch2
+// A Pebble watch app for monitoring and basic controlling of 3D printers via Octoprint
+//
+// Licence: CC BY-SA 3.0, http://creativecommons.org/licenses/by-sa/3.0/
+// Author: Dominik Scholz <pebble@schlotzz.com>, go4u.de Webdesign <info@go4u.de>
+
 var Octowatch = {
   
   // data
@@ -34,9 +40,20 @@ var Octowatch = {
         
       // preheat nozzle and bed
       case 'preheat':
-        Octoprint.sendCommand("M117 Preheating..."); // display message
-        Octoprint.sendCommand("M104 S" + localStorage.getItem('octoprintnozzle')); // set nozzle temp
-        Octoprint.sendCommand("M140 S" + localStorage.getItem('octoprintbed')); // set bed temp
+        switch(data[1]) {
+          case 'bed':
+            Octoprint.sendCommand("M117 Preheating Bed..."); // display message
+            Octoprint.sendCommand("M140 S" + localStorage.getItem('octoprintbed')); // set bed temp
+            break;
+          case 'nozzle':
+            Octoprint.sendCommand("M117 Preheating Nozzle..."); // display message
+            Octoprint.sendCommand("M104 S" + localStorage.getItem('octoprintnozzle')); // set nozzle temp
+            break;
+          default:
+            Octoprint.sendCommand("M117 Preheating..."); // display message
+            Octoprint.sendCommand("M104 S" + localStorage.getItem('octoprintnozzle')); // set nozzle temp
+            Octoprint.sendCommand("M140 S" + localStorage.getItem('octoprintbed')); // set bed temp
+        }
         break;
       
       // send gcode command(s)
